@@ -12,7 +12,7 @@
       <li><button type="submit" v-on:click="showTodoType = 'complete'">完了タスク一覧</button></li>
     </ul>
     <!-- todoの一覧表示 -->
-    <ul v-for="(todo, key) in filteredTodos" :key="todo.id">
+    <ul v-for="(todo, key) in filteredTodos" :key="todo.id" class="makedTask">
       <li><input class="toggle" type="checkbox" v-model="todo.isComplete" v-on:click="updateIsCompleteTodo(todo, key)">{{ todo.name }}</li>
       <button type="submit" v-on:click="deleteTodo(key)">削除</button>
     </ul>
@@ -30,8 +30,8 @@ export default {
     return {
       database: null,
       todosRef: null,
-      newTodoName: "",
-      showTodoType: "all",
+      newTodoName: '',
+      showTodoType: 'all',
       todos: []
     };
   },
@@ -49,11 +49,11 @@ export default {
   computed: {
     // フィルターの実装showTodoTypeが変更されると実行される
     filteredTodos: function() {
-      if (this.showTodoType == "all") {
+      if (this.showTodoType == 'all') {
         return this.todos;
       } else {
         var showIsComplete = false;
-        if (this.showTodoType == "complete") {
+        if (this.showTodoType == 'complete') {
           showIsComplete = true;
         }
         var filterTodos = {};
@@ -101,7 +101,11 @@ export default {
 </script>
 
 <style>
-  .tasklist{
-    list-style:none;
+  .taskList{
+    list-style: none;
+  }
+
+  .makedTask{
+    list-style: none;
   }
 </style>
